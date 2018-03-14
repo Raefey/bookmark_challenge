@@ -1,11 +1,15 @@
-class Link
-attr_reader :links
+require 'pg'
+require 'database_connection'
 
-  def initialize
-    @links = ["www.google.co.uk", "www.bbc.com", "www.cnn.com"]
+class Link
+
+  def self.all
+    result = DatabaseConnection.query("SELECT * FROM links")
+    result.map { |link| link['url'] }
   end
 
-  def all
-    links
+  def self.create(specs)
+
+    DatabaseConnection.query("INSERT INTO links (url) VALUES ('#{specs[:url]}');")
   end
 end
