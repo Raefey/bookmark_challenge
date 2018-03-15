@@ -10,3 +10,11 @@ describe '.create' do
     expect(Link.create(url: 'www.test.com', title: 'TEST')).to eq false
   end
 end
+
+describe '.delete' do
+  it 'should delete a existing title' do
+    existing_title = "TEST"
+    Link.create(url: 'http://www.test.com', title: 'TEST')
+    expect{Link.delete(existing_title)}.to change{Link.all.length}.by(-1)
+  end
+end

@@ -22,6 +22,10 @@ class Link
     DatabaseConnection.query("INSERT INTO links (url, title) VALUES ('#{specs[:url]}', '#{specs[:title]}');")
   end
 
+  def self.delete(title)
+    DatabaseConnection.query("DELETE FROM links WHERE title='#{title}'")
+  end
+
   private
   def self.valid?(url)
     url.include?("http://") || url.include?("https://")
