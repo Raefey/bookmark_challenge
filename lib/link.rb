@@ -3,18 +3,27 @@ require_relative 'database_connection'
 
 class Link
 
+  attr_reader :id, :url, :title
+
+  def initialize(id, url, title)
+    @id = id
+    @url = url
+    @title = title
+  end
+
+
   def self.all
     result = DatabaseConnection.query("SELECT * FROM links")
-    result.map { |link| link['url'] }
+    result.map { |link| Link.new(link['id'], link['url'], link['title']) }
   end
 
   def self.create(specs)
-    return false unless valid?(specs)
-    DatabaseConnection.query("INSERT INTO links (url) VALUES ('#{specs[:url]}');")
+    return false unless valid?(specs[:url])
+    DatabaseConnection.query("INSERT INTO links (url, title) VALUES ('#{specs[:url]}', '#{specs[:title]}');")
   end
 
   private
-  def self.valid?(specs)
-    specs[:url].include?("http://") || specs[:url].include?("https://")
+  def self.valid?(url)
+    url.include?("http://") || url.include?("https://")
   end
 end

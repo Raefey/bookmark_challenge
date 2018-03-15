@@ -29,6 +29,7 @@
     <br>
     <form action='/new-link' method='post'>
       <input type="text" name="new_link">
+      <input type="text" name="new_link_title">
       <input type="submit" value="Add Link">
     </form>
     <%if invalid_link == true%>
@@ -38,7 +39,7 @@
     <br>
     <br>
     <% @links.each do |link| %>
-      <p><%= link %></p>
+      <p><%= link.title %></p>
     <%end%>
   </body>
 </html>

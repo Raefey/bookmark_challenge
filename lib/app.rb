@@ -10,7 +10,8 @@ class Bookmarks < Sinatra::Base
   end
 
   post '/new-link' do
-    if Link.create(url: params['new_link'])
+    @links = Link.all
+    if Link.create(url: params['new_link'], title: params['new_link_title'])
       redirect('/')
     else
       erb :index, :locals => {:invalid_link => true}
