@@ -5,21 +5,34 @@
     <title>Database Homepage</title>
     <style>
       h2 {
+        font-weight: 200;
         font-size: 36px;
         text-align: center;
-        font-family: helvetica;
+        font-family: Avenir;
       }
       p {
+        font-weight: 200;
         font-size: 15px;
         text-align: center;
-        font-family: helvetica;
+        font-family: Avenir;
       }
       form {
         text-align: center;
       }
       input {
         text-align: left;
-        font-family: helvetica;
+        font-family: Avenir;
+        font-weight: 200;
+      }
+      input[type=submit] {
+        padding:5px 15px;
+        background:#ccc;
+        border:0 none;
+        cursor:pointer;
+        border-radius: 5px;
+        text-align: center;
+        font-family: Avenir;
+        font-weight: 200;
       }
     </style>
   </head>
@@ -39,7 +52,7 @@
     <br>
     <br>
     <% @links.each do |link| %>
-      <p><%= link.title %></p>
+      <a href = "<%=link.url%>"><p><%= link.title %></p></a>
     <%end%>
   </body>
 </html>
