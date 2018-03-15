@@ -15,4 +15,10 @@ feature 'adding links' do
     click_button('Submit')
     expect(page).to have_content('http://www.test.com')
   end
+  scenario "users can't add invalid link" do
+    visit '/add'
+    fill_in('url', with: 'www.test.com')
+    click_button('Submit')
+    expect(page).to have_content('Link is invalid')
+  end
 end

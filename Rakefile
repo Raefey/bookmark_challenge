@@ -14,8 +14,8 @@ end
 task :setup do
 
   connection = PG.connect
-  connection.exec("CREATE DATABASE bookmark_mangaer;")
-  connection.exec("CREATE DATABASE bookmark_mangaer_test;")
+  connection.exec("CREATE DATABASE bookmark_manager;")
+  connection.exec("CREATE DATABASE bookmark_manager_test;")
 
   conneciton = PG.connect(dbname: 'bookmark_manager')
   connection.exec("CREATE TABLE links(id SERIAL PRIMARY KEY, url VARCHAR(60))")

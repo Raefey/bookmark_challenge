@@ -1,5 +1,5 @@
 require 'pg'
-require 'database_connection'
+require_relative 'database_connection'
 
 class Link
 
@@ -9,7 +9,12 @@ class Link
   end
 
   def self.create(specs)
-
+    return false unless valid?(specs)
     DatabaseConnection.query("INSERT INTO links (url) VALUES ('#{specs[:url]}');")
+  end
+
+  private
+  def self.valid?(specs)
+    specs[:url].include?("http://") || specs[:url].include?("https://")
   end
 end
