@@ -1,4 +1,44 @@
-<% @links.each do |link| %>
-  <%= link %>
-  <br>
-<%end%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Database Homepage</title>
+    <style>
+      h2 {
+        font-size: 36px;
+        text-align: center;
+        font-family: helvetica;
+      }
+      p {
+        font-size: 15px;
+        text-align: center;
+        font-family: helvetica;
+      }
+      form {
+        text-align: center;
+      }
+      input {
+        text-align: left;
+        font-family: helvetica;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>BOOKMARK MANAGER</h2>
+    <br>
+    <br>
+    <form action='/new-link' method='post'>
+      <input type="text" name="new_link">
+      <input type="submit" value="Add Link">
+    </form>
+    <%if invalid_link == true%>
+    <p> Link is invalid </p>
+    <%end%>
+    <br>
+    <br>
+    <br>
+    <% @links.each do |link| %>
+      <p><%= link %></p>
+    <%end%>
+  </body>
+</html>

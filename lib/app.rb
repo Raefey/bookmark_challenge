@@ -6,19 +6,14 @@ class Bookmarks < Sinatra::Base
 
   get '/' do
     @links = Link.all
-    erb :index
-  end
-
-  get '/add' do
-    erb :add, :locals => {:invalid_link => false}
+    erb :index, :locals => {:invalid_link => false}
   end
 
   post '/new-link' do
-    url = params['url']
-    if Link.create(url: url)
+    if Link.create(url: params['new_link'])
       redirect('/')
     else
-      erb :add, :locals => {:invalid_link => true}
+      erb :index, :locals => {:invalid_link => true}
     end
   end
 
