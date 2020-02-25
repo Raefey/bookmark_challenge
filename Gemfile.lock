@@ -17,10 +17,10 @@ GEM
     ffi (1.9.23)
     json (2.1.0)
     mini_mime (1.0.0)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     mustermann (1.0.2)
-    nokogiri (1.8.2)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.8)
+      mini_portile2 (~> 2.4.0)
     pg (1.0.0)
     postgresql (1.0.0)
       pg
